@@ -1,16 +1,15 @@
 import { Navigate } from "react-router-dom";
 
 const DefaultRoute = () =>{
-    const authData = localStorage.getItem("authData");
+    const authData = JSON.parse(localStorage.getItem("authData"));
     const role = authData?.role
-
     if(!authData){
         return <Navigate to='/login' replace/>
     }
-    if(role === "admin"){
+    if(role === "ADMIN"){
         return <Navigate to='admin/dashboard' replace />
     }
-    if(role === "user"){
+    if(role === "USER"){
         return <Navigate to='user/dashboard' replace />
     }
 }
